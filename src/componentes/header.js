@@ -18,7 +18,7 @@ const sections = [
   { label: 'Perfil', link: '/' },
   { label: 'Educación', link: '/educacion' },
   { label: 'Experiencia laboral', link: '/proyectos' },
-  // Añade más secciones según sea necesario
+
 ];
 
 function Header() {

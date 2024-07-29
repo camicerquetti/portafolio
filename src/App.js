@@ -8,22 +8,12 @@ import MisTitulos from './componentes/educacion'; // Ajusta la ruta según la ub
 import './App.css';
 
 const App = () => {
-  const cardStyles = {
-    root: {
-      maxWidth: 345,
-      transition: 'transform 0.3s ease',
-      '&:hover': {
-        transform: 'scale(1.05)',
-      },
-    },
-  };
-
   return (
     <Router>
       <div className="App">
         <Header />
         <Routes>
-        <Route path="/" element={<Sobremi/>} /> 
+          <Route path="/" element={<Sobremi />} /> 
           <Route path="/educacion" element={<MisTitulos />} /> {/* Página de educación */}
           <Route path="/proyectos" element={<Proyectos />} /> {/* Página de proyectos */}
         </Routes>
