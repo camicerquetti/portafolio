@@ -18,7 +18,6 @@ const sections = [
   { label: 'Perfil', link: '/' },
   { label: 'Educación', link: '/educacion' },
   { label: 'Experiencia laboral', link: '/proyectos' },
-
 ];
 
 function Header() {
@@ -31,14 +30,6 @@ function Header() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleScrollToSection = (sectionId) => {
-    const section = document.querySelector(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      handleCloseNavMenu();
-    }
   };
 
   const handleOpenSocialMenu = (event) => {
@@ -79,7 +70,7 @@ function Header() {
             onClose={handleCloseNavMenu}
           >
             {sections.map((section) => (
-              <MenuItem key={section.label} component={Link} to={section.link} onClick={() => handleScrollToSection(section.link)}>
+              <MenuItem key={section.label} component={Link} to={section.link} onClick={handleCloseNavMenu}>
                 <Typography variant="inherit">{section.label}</Typography>
               </MenuItem>
             ))}
