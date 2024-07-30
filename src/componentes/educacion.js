@@ -10,7 +10,7 @@ const MisTitulos = () => {
   const pdfUrl = process.env.PUBLIC_URL + '/img/Copia de cAMILA CERQUETTI (2).pdf'; // Ruta relativa al archivo PDF en la carpeta public
   const certiPdfUrl = process.env.PUBLIC_URL + '/img/cert.pdf';
   const certificadoPdfUrl = process.env.PUBLIC_URL + '/img/certificado.pdf';
-  
+
   const handleDownload = (pdfUrl) => {
     // Crear un enlace invisible y simular clic para descargar el PDF
     const link = document.createElement('a');
@@ -21,13 +21,27 @@ const MisTitulos = () => {
     document.body.removeChild(link);
   };
 
+  const iframeStyle = {
+    width: '100%',
+    height: '350px',  // Ajusta la altura como desees para que todos los iframes tengan la misma medida
+    border: 'none',
+  };
+
+  const buttonStyles = {
+    color: 'white',
+    bgcolor: 'black',
+    '&:hover': {
+      bgcolor: '#333',
+    },
+  };
+
   return (
     <Box
       id="educacion"
       sx={{
         mt: 4,
         px: { xs: 2, md: 4 },
-        minHeight: '78vh', 
+        minHeight: '78vh',
       }}
     >
       <h2>Títulos y Currículum</h2>
@@ -37,11 +51,11 @@ const MisTitulos = () => {
         {/* Tarjeta 1 */}
         <Grid item xs={12} md={4}>
           <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-            <CardContent>
-              <iframe src={certiPdfUrl} width="100%" height="400px" title="Certificado PDF" style={{ border: 'none' }} />
+            <CardContent sx={{ flexGrow: 1 }}>
+              <iframe src={certiPdfUrl} style={iframeStyle} title="Certificado PDF" />
             </CardContent>
             <CardActions>
-              <Button size="small" onClick={() => handleDownload(certiPdfUrl)}>Descargar certi.pdf</Button>
+              <Button size="small" sx={buttonStyles} onClick={() => handleDownload(certiPdfUrl)}>Descargar documento</Button>
             </CardActions>
           </Card>
         </Grid>
@@ -49,22 +63,25 @@ const MisTitulos = () => {
         {/* Tarjeta 2 */}
         <Grid item xs={12} md={4}>
           <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-            <CardContent>
-              <iframe src={certificadoPdfUrl} width="100%" height="400px" title="Certificado PDF" style={{ border: 'none' }} />
+            <CardContent sx={{ flexGrow: 1 }}>
+              <iframe src={certificadoPdfUrl} style={iframeStyle} title="Certificado PDF" />
             </CardContent>
             <CardActions>
-              <Button size="small" onClick={() => handleDownload(certificadoPdfUrl)}>Descargar certificado.pdf</Button>
+              <Button size="small" sx={buttonStyles} onClick={() => handleDownload(certificadoPdfUrl)}>Descargar documento</Button>
             </CardActions>
           </Card>
         </Grid>
 
         {/* PDF Viewer */}
         <Grid item xs={12} md={4}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <iframe src={pdfUrl} width="100%" height="400px" title="PDF Viewer" style={{ marginBottom: '20px', border: 'none' }} />
-            <Button onClick={() => handleDownload(pdfUrl)} variant="outlined">Descargar documento</Button>
-            {/* Agregar enlace para redireccionar a la página principal */}
-          </Box>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <CardContent sx={{ flexGrow: 1 }}>
+              <iframe src={pdfUrl} style={iframeStyle} title="PDF Viewer" />
+            </CardContent>
+            <CardActions>
+              <Button size="small" sx={buttonStyles} onClick={() => handleDownload(pdfUrl)} variant="outlined">Descargar documento</Button>
+            </CardActions>
+          </Card>
         </Grid>
       </Grid>
     </Box>

@@ -4,3 +4,45 @@ button{
   color:white;
   border-radius:3px;
 }
+/* Estilo para la animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplicar la animación al nombre */
+h2 {
+ 
+  animation: fadeIn 0.5s ease-out; /* Duración y función de aceleración */
+}
+/* Estilo para el efecto de texto escribiendo en el párrafo */
+@keyframes typing-paragraph {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.fadeInParagraph {
+  overflow: hidden; /* Ocultar el texto que se desborda */
+  animation: typing-paragraph 2s steps(40, end);
+}
+
+#habilidades{
+  animation: fadeIn 0.7s ease-out; /* Duración y función de aceleración */
+ 
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  /* Ajusta el tamaño y otros estilos según sea necesario */
+}

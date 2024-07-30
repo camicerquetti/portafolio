@@ -27,8 +27,8 @@ const Sobremi = () => {
       </Box>
 
       <Box sx={{ flex: '1 1 50%', textAlign: { xs: 'center', md: 'left' } }}>
-        <h2>Camila cerquetti</h2>
-        <p>
+        <h2 className="fadeIn">Camila Cerquetti</h2>
+        <p className="fadeInParagraph">
           Profesora de Matemáticas y programadora desarrolladora web Fullstack especializada en PHP, con formación en curso de especialización Fullstack en Node.js. Apasionada por la resolución de problemas y el aprendizaje continuo, busco una oportunidad para aplicar mis conocimientos en un entorno dinámico donde pueda contribuir con mis habilidades tanto en el desarrollo front-end como en el backend. Mi experiencia diversa me permite abordar proyectos de manera integral y ofrecer soluciones creativas e innovadoras.
         </p>
       </Box>

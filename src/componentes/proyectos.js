@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import Collapse from '@mui/material/Collapse';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Avatar from '@mui/material/Avatar';
+import LaunchIcon from '@mui/icons-material/Launch'; // Importar el ícono de lanzamiento de MUI
 
 const cardStyles = {
   root: {
@@ -65,6 +66,11 @@ const Proyectos = () => {
             </CardContent>
             <CardActions disableSpacing>
               <IconButton aria-label="expandir">
+                <a href={proyecto1Url} target="_blank" rel="noopener noreferrer">
+                  <LaunchIcon />
+                </a>
+              </IconButton>
+              <IconButton aria-label="expandir">
                 <a href="#proyectos" onClick={() => handleScrollToSection('#proyectos')}>
                   <ExpandMoreIcon />
                 </a>
@@ -101,6 +107,11 @@ const Proyectos = () => {
             </CardContent>
             <CardActions disableSpacing>
               <IconButton aria-label="expandir">
+                <a href={proyecto2Url} target="_blank" rel="noopener noreferrer">
+                  <LaunchIcon />
+                </a>
+              </IconButton>
+              <IconButton aria-label="expandir">
                 <a href="#proyectos" onClick={() => handleScrollToSection('#proyectos')}>
                   <ExpandMoreIcon />
                 </a>
@@ -136,6 +147,11 @@ const Proyectos = () => {
               </Typography>
             </CardContent>
             <CardActions disableSpacing>
+              <IconButton aria-label="expandir">
+                <a href={proyecto3Url} target="_blank" rel="noopener noreferrer">
+                  <LaunchIcon />
+                </a>
+              </IconButton>
               <IconButton aria-label="expandir">
                 <a href="#proyectos" onClick={() => handleScrollToSection('#proyectos')}>
                   <ExpandMoreIcon />

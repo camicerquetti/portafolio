@@ -5,31 +5,35 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
+import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 
 const sections = [
   { label: 'Perfil', link: '/' },
   { label: 'Educación', link: '/educacion' },
-  { label: 'Experiencia laboral', link: '/proyectos' },
+  { label: 'Porfolio', link: '/proyectos' },
+  { label: 'Habilidades', link: '/habilidades' },
 ];
 
 function Header() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [openDrawer, setOpenDrawer] = React.useState(false);
   const [anchorElSocial, setAnchorElSocial] = React.useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const toggleDrawer = (open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setOpenDrawer(open);
   };
 
   const handleOpenSocialMenu = (event) => {
@@ -44,37 +48,56 @@ function Header() {
     <AppBar position="static" sx={{ backgroundColor: '#000' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {/* Botón para abrir el Drawer */}
           <IconButton
             size="large"
             aria-label="menu"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
+            onClick={toggleDrawer(true)}
             color="inherit"
           >
             <MenuIcon />
           </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
+
+          {/* Contenido del Drawer */}
+          <Drawer
+            anchor="left"
+            open={openDrawer}
+            onClose={toggleDrawer(false)}
+            sx={{
+              '& .MuiDrawer-paper': {
+                backgroundColor: 'pink',
+                width: 250,
+              },
             }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
           >
-            {sections.map((section) => (
-              <MenuItem key={section.label} component={Link} to={section.link} onClick={handleCloseNavMenu}>
-                <Typography variant="inherit">{section.label}</Typography>
-              </MenuItem>
-            ))}
-          </Menu>
+            <Box
+              sx={{
+                width: 250,
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+                alignItems: 'flex-start',
+                padding: '20px', // Ajusta el padding según necesites
+              }}
+              role="presentation"
+              onClick={toggleDrawer(false)}
+              onKeyDown={toggleDrawer(false)}
+            >
+              <List>
+                {sections.map((section) => (
+                  <ListItem
+                    button
+                    key={section.label}
+                    component={Link}
+                    to={section.link}
+                  >
+                    <ListItemText primary={section.label} />
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+          </Drawer>
 
           <Box sx={{ flexGrow: 1 }} />
 
